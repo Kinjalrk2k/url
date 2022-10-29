@@ -21,9 +21,10 @@
 
           if (redirect) {
             // if shorturl is present
-            loc.replace(redirect);
+            document.title = shortUrl;
+            setTimeout(() => loc.replace(redirect), 1000);
           } else {
-            loc.replace("../" + shortenerHome);
+            setTimeout(() => loc.replace("../" + shortenerHome), 1000);
           }
         });
     </script>
