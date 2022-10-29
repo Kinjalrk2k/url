@@ -8,8 +8,9 @@
 
     <script>
       const loc = window.location;
-      const shortUrl = loc.pathname.split("/")[2];
-      console.log({ shortUrl });
+      const [_, shortenerHome, shortUrl, ...rest] = loc.pathname.split("/");
+
+      console.log({ shortUrl, shortenerHome, rest });
 
       fetch("urls.json")
         .then((res) => res.json())
@@ -20,7 +21,7 @@
           if (redirect) {
             loc.replace(redirect);
           } else {
-            loc.replace("/");
+            loc.replace(shortenerHome);
           }
         });
     </script>
