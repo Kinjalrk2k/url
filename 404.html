@@ -10,6 +10,12 @@
       const loc = window.location;
       const shortUrl = loc.pathname.split("/")[2];
       console.log({ shortUrl });
+
+      fetch("urls.json")
+        .then((res) => res.json())
+        .then((res) => {
+          console.log(res);
+        });
     </script>
   </head>
   <body>
