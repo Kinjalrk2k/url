@@ -15,6 +15,13 @@
         .then((res) => res.json())
         .then((res) => {
           console.log(res);
+          const redirect = res[shortUrl];
+
+          if (redirect) {
+            loc.replace(redirect);
+          } else {
+            loc.replace("../");
+          }
         });
     </script>
   </head>
