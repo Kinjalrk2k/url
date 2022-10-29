@@ -6,11 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Whoosh!</title>
 
+    <link rel="shortcut icon" type="image/x-icon" href="./favicon.ico" />
+    <link rel="stylesheet" href="style.css" />
+
     <script>
       const loc = window.location;
       const [_, shortenerHome, shortUrl, ...rest] = loc.pathname.split("/");
-
-      console.log({ shortUrl, shortenerHome, rest });
 
       fetch("urls.json")
         .then((res) => res.json())
@@ -18,8 +19,8 @@
           console.log(res);
           const redirect = res[shortUrl];
 
-          // if shorturl is present
           if (redirect) {
+            // if shorturl is present
             loc.replace(redirect);
           } else {
             loc.replace("../" + shortenerHome);
@@ -28,6 +29,8 @@
     </script>
   </head>
   <body>
-    <h1>404</h1>
+    <div class="container">
+      <h1>Hold Tight! Redirecting...</h1>
+    </div>
   </body>
 </html>
