@@ -18,10 +18,11 @@
           console.log(res);
           const redirect = res[shortUrl];
 
+          // if shorturl is present
           if (redirect) {
             loc.replace(redirect);
           } else {
-            loc.replace(shortenerHome);
+            loc.replace("../" + shortenerHome);
           }
         });
     </script>
