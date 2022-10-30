@@ -36,3 +36,23 @@ body {
   font-size: 1.5rem;
   text-transform: capitalize;
 }
+
+#list {
+  margin: 1rem;
+  padding: 1rem;
+}
+
+.item a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.item {
+  margin-bottom: 1rem;
+  text-align: center;
+  font-size: larger;
+}
+
+.heading {
+  text-align: center;
+}
