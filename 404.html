@@ -11,7 +11,14 @@
 
     <script>
       const loc = window.location;
-      const [_, shortenerHome, shortUrl, ...rest] = loc.pathname.split("/");
+      // if configured in a route, eg: kinjalrk2k.github.io/url/google
+      // const [_, shortenerHome, shortUrl, ...rest] = loc.pathname.split("/");
+
+      // if conigured by a domain, eg: url.kinjal.dev/google
+      const shortenerHome = "/";
+      const shortUrl = loc.pathname.split("/")[1];
+
+      console.log({ shortenerHome, shortUrl });
 
       fetch("urls.json")
         .then((res) => res.json())
