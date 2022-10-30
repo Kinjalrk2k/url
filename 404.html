@@ -35,6 +35,9 @@
             } else {
               setTimeout(() => loc.replace(shortenerHome), 1000);
             }
+          })
+          .catch((err) => {
+            setTimeout(() => loc.replace(shortenerHome), 1000);
           });
       } catch (err) {
         setTimeout(() => loc.replace(shortenerHome), 1000);
