@@ -10,30 +10,35 @@
     <link rel="stylesheet" href="style.css" />
 
     <script>
-      const loc = window.location;
-      // if configured in a route, eg: kinjalrk2k.github.io/url/google
-      // const [_, shortenerHome, shortUrl, ...rest] = loc.pathname.split("/");
+      try {
+        const loc = window.location;
+        // if configured in a route, eg: kinjalrk2k.github.io/url/google
+        // let [_, shortenerHome, shortUrl, ...rest] = loc.pathname.split("/");
+        // shortenerHome = "../" + shortenerHome
 
-      // if conigured by a domain, eg: url.kinjal.dev/google
-      const shortenerHome = "/";
-      const shortUrl = loc.pathname.split("/")[1];
+        // if conigured by a domain, eg: url.kinjal.dev/google
+        const shortenerHome = "/";
+        const shortUrl = loc.pathname.split("/")[1];
 
-      console.log({ shortenerHome, shortUrl });
+        console.log({ shortenerHome, shortUrl });
 
-      fetch("urls.json")
-        .then((res) => res.json())
-        .then((res) => {
-          console.log(res);
-          const redirect = res[shortUrl];
+        fetch("urls.json")
+          .then((res) => res.json())
+          .then((res) => {
+            console.log(res);
+            const redirect = res[shortUrl];
 
-          if (redirect) {
-            // if shorturl is present
-            document.title = shortUrl;
-            setTimeout(() => loc.replace(redirect), 1000);
-          } else {
-            setTimeout(() => loc.replace("../" + shortenerHome), 1000);
-          }
-        });
+            if (redirect) {
+              // if shorturl is present
+              document.title = shortUrl;
+              setTimeout(() => loc.replace(redirect), 1000);
+            } else {
+              setTimeout(() => loc.replace(shortenerHome), 1000);
+            }
+          });
+      } catch (err) {
+        setTimeout(() => loc.replace(shortenerHome), 1000);
+      }
     </script>
   </head>
   <body>
